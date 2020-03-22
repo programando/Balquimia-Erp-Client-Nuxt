@@ -1,9 +1,11 @@
 <template>
   <div class="container">
+   
     <h1> Facturas creadas</h1>
-      <div v-for="Factura in Facturas" :key="Factura.id_fact_elctrnca">
+       <h2>{{ Mensaje }} </h2>
+<!--       <div v-for="Factura in Facturas" :key="Factura.id_fact_elctrnca">
           <h2> {{ Factura.fcha_rgstro }}</h2>
-      </div>
+      </div> -->
       
   </div>
 </template>
@@ -17,11 +19,12 @@ export default {
   name: 'IndexPage',
   data: () => ({
     Facturas: [],
+    Mensaje:'He cargado la página inicial',
   }),
   created: async function() {
-    let response = await axios.get(`${env.api}facturas`);
-    this.Facturas = response.data;
-    console.log ( this.Facturas);
+    //let response = await axios.get(`${env.api}facturas`);
+    //this.Facturas = response.data;
+    
   }
 }
 </script>
