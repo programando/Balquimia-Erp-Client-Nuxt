@@ -19,7 +19,7 @@ export default {
   name: 'IndexPage',
   data: () => ({
     Facturas: [],
-    Mensaje:'He cargado con las facturas creadas. 10 primeras',
+    Mensaje:'He cargado con las facturas creadas. 10 primeras. Solucionado Cors. Allow Origin',
   }),
   created: async function() {
     let response = await axios.get(`${env.api}facturas`);
