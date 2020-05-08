@@ -1,8 +1,9 @@
  
 </template><template>
   <div class="container">
-
+      
        <h2>{{ Mensaje }} </h2>
+        
        <table>
           <thead>
              <tr>
@@ -33,26 +34,27 @@
 </template>
 
 <script>
- 
-
  import { FacturaElectronica } from '@/config/services';
  const Factura = new  FacturaElectronica('facturas'); 
 
 export default {
   name: 'UltimasFacturasCreadas',
-  data: () => ({
-    Facturas: [],
-    Mensaje:'Últimos documentos generados generados',
-  }),
+    data: () => ({
+      Facturas: [],
+      Mensaje:'Últimos documentos generados generados',
+    }),
  
-  created: async function() {
-    let response =  await Factura.UltimasCreadas();
-    this.Facturas = response.data.data; 
- }
-
+     created() {
+        Factura.UltimasCreadas().then( response => {
+          this.Facturas = response.data.data;
+        });
+    }  
+  
 }
 </script>
 
+
 <style>
 
+ 
 </style>

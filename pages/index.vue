@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <nuxt-link to="/erp/factura-electronica/ultimos-documentos-generados"> Facturas </nuxt-link>
+    <nuxt-link to="/erp/factura-electronica/ultimos-documentos-generados" class="menu"> Facturas </nuxt-link>
+    <nuxt-link to="/erp/login/login" class="menu"> Login </nuxt-link>
       
   </div>
 </template>
@@ -20,5 +21,7 @@ export default {
 </script>
 
 <style>
-
+  .menu {
+    margin-right: 35px;
+  }
 </style>

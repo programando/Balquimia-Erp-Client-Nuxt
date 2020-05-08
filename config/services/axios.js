@@ -1,8 +1,6 @@
 import { address} from '@/config/constants'
-
-import Vue     from 'vue'
 import axios   from 'axios';
-Vue.use (axios)
+ 
 
 class ApiConnect {
 
