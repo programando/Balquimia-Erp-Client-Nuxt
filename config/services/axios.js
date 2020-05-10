@@ -1,16 +1,10 @@
 import { address} from '@/config/constants'
-import axios   from 'axios';
+import axios from "axios";
+
+let Api = axios.create({
+  baseURL: address.apiUrl
+});
  
+Api.defaults.withCredentials = true;
 
-class ApiConnect {
-
-   constructor ( Ruta ){
-      this.Url = address.apiUrl + Ruta;
-   }
-
-   getQuery() {
-      return  axios.get ( this.Url )
-   }
-}
-
-export default ApiConnect;
+export default Api;

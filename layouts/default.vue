@@ -1,8 +1,23 @@
 <template>
   <div>
+  <nav  >
+    <div class="container">
+         <ul >
+         <li> <nuxt-link to="/erp/users/login"> Login </nuxt-link></li>
+         <li> <nuxt-link to="/erp/users/register"> Registro </nuxt-link> </li>
+         <li> <nuxt-link to="/erp/users/dashboard"> Dashboard </nuxt-link></li>
+         <li> <nuxt-link to="/erp/users/logout"> logout </nuxt-link>  </li>
+ 
+         </ul>
+    </div>
+  </nav>
     <nuxt />
   </div>
 </template>
+
+<script>
+ 
+</script>
 
 <style>
 html {
@@ -52,4 +67,23 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+   nav {
+      margin: 40px;;
+   }
+
+ul li {
+ display: inline;
+ }
+
+ ul li a {
+ font-family: Arial;
+ font-size: 11px;
+ text-decoration: none;
+ float: left;
+ padding: 10px;
+ background-color: #2175bc;
+ color: #fff;
+ }
+
 </style>

@@ -1,27 +1,28 @@
 <template>
-  <div class="container">
+  <div class="menu">
     <nuxt-link to="/erp/factura-electronica/ultimos-documentos-generados" class="menu"> Facturas </nuxt-link>
-    <nuxt-link to="/erp/login/login" class="menu"> Login </nuxt-link>
+     
+    
       
   </div>
 </template>
 
 <script>
  
- 
+
 
 export default {
   name: 'IndexPage',
   data: () => ({
  
- 
+
   }),
   
 }
 </script>
 
-<style>
+<style scoped>
   .menu {
-    margin-right: 35px;
+    margin: 50px;
   }
 </style>

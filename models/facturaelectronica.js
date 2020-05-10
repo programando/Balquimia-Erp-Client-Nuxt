@@ -1,4 +1,4 @@
-import ApiAxios from '@/config/services/axios.js'
+import ApiAxios from '~/config/services/Axios.js'
 import { address} from '@/config/constants'
 import axios   from 'axios';
 
