@@ -1,4 +1,6 @@
 
+require('dotenv').config(); // process.env.variable-definida
+
 export default {
   mode: 'universal',
   /*
@@ -33,6 +35,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+      '@nuxtjs/dotenv',
 
   ],
   /*
@@ -41,7 +44,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    
   ],
   /*
   ** Axios module configuration
@@ -54,6 +58,7 @@ export default {
   ** Build configuration
   */
   build: {
+
     /*
     ** You can extend webpack config here
     */

@@ -1,6 +1,6 @@
 <template>
   <div class="home col-5 mx-auto py-5 mt-5">
-    <h1 class="text-center">Login</h1>
+     <h1 class="text-center">Login</h1>
     <div class="card">
       <div class="card-body">
         <div class="form-group">
@@ -36,8 +36,9 @@
 </template>
 
 <script>
-import User from "@/models/User";
 
+import User from "@/models/User";
+ 
 export default {
   name : "Login",
   data() {
@@ -46,15 +47,16 @@ export default {
         email: "",
         password: ""
       },
-      errors: []
+      errors: [] 
     };
   },
 
+ 
   methods: {
       login() {
-        User.login( this.form)
-        .then (()=>{
-            localStorage.setItem('Auth',"true");
+         User.login( this.form)
+        .then (response => {
+            this.$store.commit('UserStore/SET_USER', response.data);
             this.$router.replace({ path: 'dashboard' });
         })
         .catch( error => {

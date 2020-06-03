@@ -9,8 +9,7 @@ export default {
       },
 
       async login ( formData ) {
-          await Csrf.getCookie() ;
-           
+          await Csrf.getCookie() ;        
           return Api.post('login', formData);
       },
 
