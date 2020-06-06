@@ -1,4 +1,4 @@
-import Api      from "Axios";
+import Api      from "~/config/services/Axios";
 //import Cookie   from 'js-cookie';
 
  
