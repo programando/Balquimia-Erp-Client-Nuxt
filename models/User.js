@@ -1,4 +1,4 @@
-import Api  from "~/config/services/Axios";
+import Api  from "~/config/services/axios";
 import Csrf from "~/config/services/Csrf";
 
 export default {
