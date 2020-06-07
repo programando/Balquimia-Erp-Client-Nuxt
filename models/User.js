@@ -1,5 +1,5 @@
-import Api  from "~/config/services/axios";
-import Csrf from "~/config/services/Csrf";
+import Api  from "@/config/services/Axios";
+import Csrf from "@/config/services/Csrf";
 
 export default {
 
