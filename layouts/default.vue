@@ -3,7 +3,7 @@
   <nav  >
     <div class="container">
          <ul >
-         <li> <nuxt-link to="/erp/users/login"> Login Uuarios </nuxt-link></li>
+         <li> <nuxt-link to="/erp/users/login"> Login Usuarios </nuxt-link></li>
          <li> <nuxt-link to="/erp/users/register"> Registro </nuxt-link> </li>
          <li> <nuxt-link to="/erp/users/dashboard"> Dashboard </nuxt-link></li>
          <li> <nuxt-link to="/erp/users/logout"> logout </nuxt-link>  </li>
