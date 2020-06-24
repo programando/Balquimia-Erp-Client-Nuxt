@@ -33,8 +33,23 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/css/tailwind.css',
      
   ],
+
+    build: {
+      postcss: {
+        plugins: {
+          'postcss-import': {},
+          'tailwindcss': ( './tailwind.config.js'),
+          'postcss-nested': {}
+        }
+      },
+      preset: {
+        stage: 1 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
+      }
+  },
+    
   /*
   ** Plugins to load before mounting the App
   */
@@ -46,7 +61,9 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-      '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/tailwindcss',
+    'nuxt-purgecss',
   ],
   /*
   ** Nuxt.js modules
@@ -55,8 +72,13 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    'nuxt-purgecss',
     
   ],
+    purgeCSS: {
+    mode: 'postcss',
+    enabled: (process.env.NODE_ENV === 'production')
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -64,6 +86,8 @@ export default {
   axios: {
      
   },
+
+  
   /*
   ** Build configuration
   */
@@ -75,5 +99,6 @@ export default {
     extend (config, ctx) {
     },
     extractCSS: true,
+ 
   }
 }
