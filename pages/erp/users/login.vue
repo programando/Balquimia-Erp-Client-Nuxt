@@ -36,9 +36,7 @@
 </template>
 
 <script>
-
 import User from "@/models/User";
- 
 export default {
   name : "Login",
   data() {
@@ -57,7 +55,7 @@ export default {
          User.login( this.form)
         .then (response => {
             this.$store.commit('UserStore/SET_USER', response.data);
-            this.$router.replace({ path: 'dashboard' });
+            this.$router.replace({ path: 'erp-users-dashboard' });
         })
         .catch( error => {
           if ( error.response.status == 422) {
