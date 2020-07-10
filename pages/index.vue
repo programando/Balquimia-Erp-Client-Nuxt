@@ -4,7 +4,7 @@
     <header class="bg-cover bg-center  h-full w-full opacity-100" 
             style="background-image: url('/images/login/backgound-login.jpg');">
             <h1 class="text-4xl text-center mt-12 font-bold text-white tracking-wide">BALQUIMIA S.A.S.</h1>
-<!-- https://ik.imagekit.io/q5edmtudmz/peter-lloyd-680526-unsplash_TYZn4kayG.jpg -->
+            <!-- https://ik.imagekit.io/q5edmtudmz/peter-lloyd-680526-unsplash_TYZn4kayG.jpg -->
         <div class="content px-40 py-2">
             <div class="body mt-20 mx-8">
                 <div class="md:flex items-center justify-between">
@@ -27,7 +27,7 @@
                                 <input 
                                         type="email" 
                                         class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" 
-                                        placeholder="Email Address"
+                                        placeholder="Dirección electrónica (Email)"
                                         v-model="form.email" 
                                         @keyup="clearErrors"/>
                                         <span class="text-red-500 text-xs ml-2" v-if="errors.email">
@@ -36,7 +36,7 @@
                                
                                 <input type="password" 
                                         class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mt-6 mb-2 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" 
-                                        placeholder="Password"
+                                        placeholder="Password o contraseña"
                                         v-model="form.password" 
                                         @keyup="clearErrors"/>
                                         <span class="text-red-500" v-if="errors.password">
@@ -44,8 +44,12 @@
                                         </span>
 
                                 <div class="flex items-center justify-between mt-3">
-                                    <a href="#" class="text-gray-600">Olvidé mi contraseña?</a>
-                                    <button class="bg-gray-800 text-gray-200  px-2 py-1 rounded hover:bg-red-600"
+                                  
+                                    <nuxt-link to="/erp/users/password-reset" class="text-gray-600"> 
+                                            Olvidé mi contraseña ? 
+                                    </nuxt-link>
+
+                                    <button class="bg-orange-600 text-gray-200  px-2 py-1 rounded hover:bg-orange-400"
                                         @click.prevent="login" :disabled="buttonIsDisabled" > Ingresar al sistema </button>
                                 </div>
                             </form>
@@ -84,7 +88,7 @@ export default {
          User.login( this.form)
         .then (response => {
             this.$store.commit('UserStore/SET_USER', response.data);
-            this.$router.replace({ path: 'erp/dashboard' });
+            this.$router.replace({ path: '/erp/dashboard' });
             this.buttonIsDisabled = true;
         })
         .catch( error => {
@@ -97,6 +101,9 @@ export default {
       clearErrors() {
           this.errors = [];
           this.buttonIsDisabled = false;
+      },
+      resetPasswod () {
+          this.$router.replace({ path: '/erp/users/reset' });
       }
       
   }// Methods

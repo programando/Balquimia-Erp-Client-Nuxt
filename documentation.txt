@@ -7,3 +7,6 @@ Put the icosn
 
 
 https://webdesign.tutsplus.com/es/tutorials/how-to-create-a-responsive-form-using-tailwindcss--cms-34128
+
+
+https://codepen.io/tag/tailwindcss?cursor=ZD0xJm89MCZwPTEy
