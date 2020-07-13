@@ -13,30 +13,42 @@
         <h2 class="text-3xl text-gray-800 text-center"> BALQUIMIA S.A.S.</h2>
 
           <p class="text-sm text-center mt-4">
-            A la cuenta de correo electrónico registrada en nuestro sistema,  enviaremos las instrucciones para que cambie los datos de acceso.
+            Enviaremos un correo electrónico a la cuenta registrada en nuestro sistema con las con las instrucciones para que cambie los datos de acceso.
             </p>
 
         <div class="signup-form mt-6 md:mt-6">
 
-          <div class=" border border-gray-400 rounded flex items-center mb-4">
+          <div class=" border border-gray-400 rounded flex items-center">
             <div class="w-10 h-7 flex justify-center items-center flex-shrink-0 ">
               <span class="text-black"> <font-awesome-icon :icon="['fas', 'envelope-open-text']"/> </span>
             </div>
             <div class="flex-1 ">
-              <input  class="h-7 py-1 pr-3 w-full  focus:outline-none" id="email" type="email" placeholder="cuenta de correo electrónico o email..." autofocus>
+              <input  class="h-7 py-1 pr-3 w-full  focus:outline-none px-4" 
+                    id="email" type="email" placeholder="cuenta de correo electrónico o email..." autofocus
+                    v-model="form.email"
+              >                 
             </div>
           </div>
-
+          <ErrorMessage v-if="errors.email"> {{ errors.email[0] }}  </ErrorMessage>
           <div class="text-center mt-6 md:mt-12">
-            <button class="bg-orange-600 hover:bg-orange-400 text-white text-md py-2 px-4 md:px-6 rounded transition-colors duration-300"
+            
+            <ButtonLoading 
+                @click.prevent="ResetPassword" 
+                size="small" 
+                ref="ButtonLoading" 
+                variant="danger"
+                variant-type="normal">  Enviar correo  </ButtonLoading>
+
+ 
+
+<!--             <button class="bg-orange-600 hover:bg-orange-400 text-white text-md py-2 px-4 md:px-6 rounded transition-colors duration-300"
               @click.prevent="ResetPassword">
                 Enviar correo 
-            </button>
+            </button> -->
+
           </div>
 
         </div>
-
-
 
       </div>
     </div>
@@ -48,22 +60,41 @@
 </template>
 
 <script>
-
+  import User            from "@/models/User";
+  import ErrorMessage from '@/components/controls/app-objects/ErrorMessageComponent';
+  import ButtonLoading from "@/components/controls/buttons/ButtonLoading";
 
 export default {
   name: "ResetPassword",
   layout: "none",
-  data() {
-    return {
- 
-    };
-  },
+  data: () => ({
+      form : {
+          email : ''
+      },
+      errors : [],
+  }),
+
+  components: { ErrorMessage, ButtonLoading },
+
   mounted() {
        document.getElementById('email').focus();
   },
   methods: {
+  
       ResetPassword () {
-
+        this.$refs.ButtonLoading.startLoading();
+        this.errors=[];
+        User.resetPassword ( this.form )
+        .then (response => {
+            console.log( response.data )
+            this.$refs.ButtonLoading.stopLoading();
+        })   
+        .catch( error => {
+          if ( error.response.status == 422 || error.response.status == 419) {
+            this.errors = error.response.data.errors; 
+            this.$refs.ButtonLoading.stopLoading();  
+          }
+        })             
       }
 
   }

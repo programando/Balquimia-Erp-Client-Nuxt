@@ -20,5 +20,9 @@ export default {
 
       async auth(){
          return Api.get('user');
+      },
+      
+    async resetPassword(formData) {
+        return Api.post('/reset/password', formData);
       }
 }

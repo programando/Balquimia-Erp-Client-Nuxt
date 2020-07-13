@@ -1,9 +1,13 @@
+tailwind Components - toolbox
+   https://tailwindcomponents.com/
+   https://www.tailwindtoolbox.com/
+
 How to use FontAwesome 5 in Nuxt ( Julio 06 2020)
    https://hisk.io/fontawesome-nuxt/
    https://medium.com/@kozyreva.hanna/nuxt-js-fontawesome-integration-7ec56b1a41c8
 
 Put the icosn
-   https://fontawesome.com/icons?d=gallery&q=exc&s=solid
+   https://fontawesome.com/icons?d=gallery
 
 
 https://webdesign.tutsplus.com/es/tutorials/how-to-create-a-responsive-form-using-tailwindcss--cms-34128

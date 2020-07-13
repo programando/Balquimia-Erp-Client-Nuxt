@@ -30,18 +30,14 @@
                                         placeholder="Dirección electrónica (Email)"
                                         v-model="form.email" 
                                         @keyup="clearErrors"/>
-                                        <span class="text-red-500 text-xs ml-2" v-if="errors.email">
-                                             <font-awesome-icon :icon="['fas', 'exclamation-triangle']"/>  {{ errors.email[0] }} 
-                                        </span>
-                               
+        
+                                        <ErrorMessage v-if="errors.email" > {{ errors.email[0] }} </ErrorMessage>
+                                
                                 <input type="password" 
                                         class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mt-6 mb-2 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" 
                                         placeholder="Password o contraseña"
                                         v-model="form.password" 
                                         @keyup="clearErrors"/>
-                                        <span class="text-red-500" v-if="errors.password">
-                                            <font-awesome-icon :icon="['fab', 'facebook']"/>    {{ errors.password[0] }}
-                                        </span>
 
                                 <div class="flex items-center justify-between mt-3">
                                   
@@ -65,12 +61,11 @@
 </template>
 
 <script>
- 
- import User            from "@/models/User";
- import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
+  import User            from "@/models/User";
+  import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
+  import ErrorMessage    from "@/components/controls/app-objects/ErrorMessageComponent"
 
 export default {
-
   layout :'app-admin',
   name: 'IndexPage',
   data: () => ({
@@ -81,7 +76,7 @@ export default {
       errors: [],
       buttonIsDisabled: false
   }),
-  components : { FrasesCelebres} ,
+  components : { FrasesCelebres, ErrorMessage} ,
 
    methods: {
       login() {
