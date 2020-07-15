@@ -34,6 +34,7 @@ export default {
   */
   css: [
     '@/assets/css/tailwind.css',
+    '@/assets/css/app-transitions'
      
   ],
 

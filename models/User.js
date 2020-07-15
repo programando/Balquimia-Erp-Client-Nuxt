@@ -2,19 +2,19 @@ import Api  from "@/config/services/Axios";
 import Csrf from "@/config/services/Csrf";
 
 export default {
-
+    async getCokie() {
+      await Csrf.getCookie();
+    },
+  
     async register( formData ) {
-          await Csrf.getCookie();
           return Api.post("register", formData ) ;
       },
 
-      async login ( formData ) {
-          await Csrf.getCookie() ;        
+      async login ( formData ) {       
           return Api.post('login', formData);
       },
 
       async logout() {
-        await Csrf.getCookie() ;
         return Api.post('logout');
       },
 
@@ -22,7 +22,10 @@ export default {
          return Api.get('user');
       },
       
-    async resetPassword(formData) {
+      async resetPassword(formData) {
         return Api.post('/reset/password', formData);
+      },
+      async updatePassword(formData) {
+        return Api.post('/update/password', formData);
       }
 }

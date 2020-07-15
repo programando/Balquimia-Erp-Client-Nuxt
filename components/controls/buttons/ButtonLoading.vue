@@ -78,13 +78,13 @@ export default {
     computed: {
         btnClass() {
             return {
-                "base-spinner": 				this.loading 			 == true,
+                "base-spinner": 		this.loading 	   == true,
                 "cursor-not-allowed": 	this.disableButton == true,
-                "rounded-lg": 					this.rounded 			 === "medium",
-                "rounded-full": 				this.rounded 			 === "large",
-                "px-6 py-3": 						this.size 	 			 == "normal",
-                "px-4 py-2": 						this.size 	 			 == "small",
-                "base-button inline-flex align-middle align-items-center justify-center font-medium focus:outline-none border-2": true,
+                "rounded-lg": 			this.rounded 	   === "medium",
+                "rounded-full": 		this.rounded 	   === "large",
+                "px-6 py-2": 			this.size 	 	   == "normal",
+                "px-4 py-1": 			this.size 	 	   == "small",
+                "base-button inline-flex align-middle align-items-center justify-center  focus:outline-none border-2": true,
             };
         },
  

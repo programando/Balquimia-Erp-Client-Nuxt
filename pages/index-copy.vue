@@ -24,22 +24,20 @@
                                 <h5 class="text-sm text-center font-semibold text-gray-800 mb-2">
                                    Registre sus credenciales para ingreso al sistema
                                 </h5>
- 
-                           
-                                <InputBasic type= "email"
+                                <input 
+                                        type="email" 
+                                        class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" 
                                         placeholder="Dirección electrónica (Email)"
                                         v-model="form.email" 
-                                        :errors="errors.email"
-                                        @keyup="clearErrors"
-                                > </InputBasic>
-
-                                <InputBasic type= "password"
-                                        class="mt-6"
+                                        @keyup="clearErrors"/>
+        
+                                        <ErrorMessage v-if="errors.email" > {{ errors.email[0] }} </ErrorMessage>
+                                
+                                <input type="password" 
+                                        class="rounded px-4 w-full py-1 bg-gray-200  border border-gray-400 mt-6 mb-2 text-gray-700 placeholder-gray-700 focus:bg-white focus:outline-none" 
                                         placeholder="Password o contraseña"
                                         v-model="form.password" 
-                                        @keyup="clearErrors"
-                                > </InputBasic>
-
+                                        @keyup="clearErrors"/>
 
                                 <div class="flex items-center justify-between mt-3">
                                   
@@ -47,14 +45,8 @@
                                             Olvidé mi contraseña ? 
                                     </nuxt-link>
 
-                                    <ButtonLoading 
-                                        @click.prevent="login" 
-                                        size="small" 
-                                        ref="ButtonLoading" 
-                                        variant="success"
-                                        variant-type="normal">  Ingresar al sistema 
-                                    </ButtonLoading>
-
+                                    <button class="bg-orange-600 text-gray-200  px-2 py-1 rounded hover:bg-orange-400"
+                                        @click.prevent="login" :disabled="buttonIsDisabled" > Ingresar al sistema </button>
                                 </div>
                             </form>
                         </div>
@@ -71,50 +63,44 @@
 <script>
   import User            from "@/models/User";
   import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
-  import InputBasic      from "@/components/controls/inputs/Input-Basic";
-  import ButtonLoading   from "@/components/controls/buttons/ButtonLoading";
+  import ErrorMessage    from "@/components/controls/app-objects/ErrorMessageComponent"
 
 export default {
   layout :'app-admin',
   name: 'IndexPage',
-
   data: () => ({
       form: {
         email: "jhonjamesmg@hotmail.com",
         password: "123256"
       },
-      errors: [ ],
+      errors: [],
       buttonIsDisabled: false
   }),
-  components : { FrasesCelebres, InputBasic, ButtonLoading } ,
-   mounted() { 
-       User.getCokie();
-   },
+  components : { FrasesCelebres, ErrorMessage} ,
 
    methods: {
       login() {
-        this.$refs.ButtonLoading.startLoading();
          User.login( this.form)
         .then (response => {
             this.$store.commit('UserStore/SET_USER', response.data);
             this.$router.replace({ path: '/erp/dashboard' });
             this.buttonIsDisabled = true;
-            this.$refs.ButtonLoading.stopLoading();
         })
         .catch( error => {
           if ( error.response.status == 422) {
-            this.errors = error.response.data.errors;  
-            this.$refs.ButtonLoading.stopLoading(); 
+            this.errors = error.response.data.errors;   
           }
         })
-       
       },
 
       clearErrors() {
           this.errors = [];
           this.buttonIsDisabled = false;
       },
-
+      resetPasswod () {
+          this.$router.replace({ path: '/erp/users/reset' });
+      }
+      
   }// Methods
 
 }
