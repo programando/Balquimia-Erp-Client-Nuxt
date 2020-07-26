@@ -39,16 +39,7 @@ export default {
   ],
 
   build: {
-      postcss: {
-        plugins: {
-          'postcss-import': {},
-          tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
-          'postcss-nested': {}
-        }
-      },
-      preset: {
-        stage: 1 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
-      }
+ 
   },
     
   /*
