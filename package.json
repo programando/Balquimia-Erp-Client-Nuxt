@@ -10,7 +10,6 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "tailwind": "npx tailwindcss build assets/css/tailwind.css  -o assets/css/app-tailwind.css"
-     
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
@@ -39,6 +38,7 @@
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-purgecss": "^1.0.0",
     "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.2.3",
     "postcss-preset-env": "^6.7.0",
     "sass-loader": "^8.0.2",
