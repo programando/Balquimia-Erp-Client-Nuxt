@@ -3,6 +3,8 @@
 ### Node template
 # Logs
 
+/config/constants/address.js
+
 /logs
 *.log
 npm-debug.log*
