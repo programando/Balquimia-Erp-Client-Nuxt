@@ -34,15 +34,15 @@ export default {
   */
   css: [
     '@/assets/css/tailwind.css',
+    '@/assets/css/app-tailwind.css',
     '@/assets/css/app-transitions'
-     
   ],
 
-    build: {
+  build: {
       postcss: {
         plugins: {
           'postcss-import': {},
-          'tailwindcss': ( './tailwind.config.js'),
+          tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
           'postcss-nested': {}
         }
       },
