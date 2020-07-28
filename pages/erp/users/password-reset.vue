@@ -24,7 +24,18 @@
                           <div class="signup-form mt-6 md:mt-6">
                                 <div class=" border border-gray-400 rounded flex items-center">
                                   <div class="w-10 h-7 flex justify-center items-center flex-shrink-0 ">
-                                    <span class="text-black"> <font-awesome-icon :icon="['fas', 'envelope-open-text']"/> </span>
+                                    <span class="text-black"> 
+                                    <svg  class="w-8 h-8 text-blue-400"
+                                          fill="none"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          viewBox="0 0 24 24"
+                                          stroke="currentColor"
+                                      >
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg> 
+                                    </span>
                                 </div>
                                 <div class="flex-1 ">
                                   <input  class="h-7 py-1 pr-3 w-full  focus:outline-none px-4" 
