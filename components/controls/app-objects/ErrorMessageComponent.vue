@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="text-red-500 text-xs ml-2 mt-0"> 
-         <font-awesome-icon :icon="['fas', 'exclamation-triangle']"/>   
+         icono   
          <slot></slot>  
      </span>
   </div>
@@ -16,10 +16,5 @@ export default {
 
 
 }
-/*
-<!--   
- <span class="text-red-500 text-xs ml-2" v-if="errors.email">
-    <font-awesome-icon :icon="['fas', 'exclamation-triangle']"/>  {{ errors.email[0] }} 
- </span> -->
-*/
+ 
 </script>
