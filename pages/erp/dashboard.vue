@@ -1,17 +1,6 @@
 <template>
-  <div class="home col-8 mx-auto py-5 mt-5">
-     <br>
-     <br>
-    <div class="card">
-      <div class="card-body" v-if="user">
-        <h3>Hello, {{ user.name }}</h3>
-        <span>{{ user.email }}</span>
-         <hr>
-         Logueado : <pre>{{  user  }}</pre>
-      </div>
-    </div>
-
-   <button @click='logout' v-if="user"> Cerrar </button>
+  <div>
+      12
 
   </div>
 </template>
@@ -21,28 +10,17 @@ import User from "@/models/User";
 import {mapGetters, mapMutations} from 'vuex';
 
 
+
 export default {
   data() {
     return {
-      //user: null
     };
   },
 
-/*    mounted() {
-     if (this.$store.state.UserStore.Logueado ) {
-        this.user = this.$store.state.UserStore.User
-       return 
-     }
-    User.auth()
-      .then(response => {
-        this.user = response.data;
-        
-    });
-  },  */
-
+  middleware: ['auth'],
   computed : {
        ...mapGetters ({
-         user: 'UserStore/getUser',
+         user: 'UserStore/isLoggin',
        })
   },
 
@@ -51,9 +29,7 @@ export default {
         User.logout().then( response => {
           this.$store.commit('UserStore/SET_USER', response.data);
         });  
-        
       }
-      
     },
 
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="text-red-500 text-xs ml-2 mt-0"> 
-         icono   
+         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  
          <slot></slot>  
      </span>
   </div>

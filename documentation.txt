@@ -5,6 +5,7 @@ tailwind Components - toolbox
 How to use FontAwesome 5 in Nuxt ( Julio 06 2020)
    https://hisk.io/fontawesome-nuxt/
    https://medium.com/@kozyreva.hanna/nuxt-js-fontawesome-integration-7ec56b1a41c8
+   https://fontawesome.com/v4.7.0/icons/
 
 Put the icosn
    https://fontawesome.com/icons?d=gallery

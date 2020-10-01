@@ -23,7 +23,7 @@
                 @keyup   = "$emit('keyup', $event)"
             />
             <div v-if="errors.length" class="text-red-600 mt-1 text-xs ml-1">
-                icono {{ errors[0] }}
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ errors[0] }}
             </div>
         </div>        
   </div>

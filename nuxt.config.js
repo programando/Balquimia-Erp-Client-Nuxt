@@ -1,3 +1,4 @@
+// https://serversideup.net/using-laravel-sanctum-airlock-with-nuxtjs/
 
 require('dotenv').config(); // process.env.variable-definida
 
@@ -47,6 +48,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/vuex-persist', ssr: false }
       
   ],
  
@@ -63,12 +65,29 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
+  
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-purgecss',
- 
-
+    'nuxt-i18n',    // https://tecnoxperiencia.com/aplicacion-multilenguaje-utilizando-vue-i18n-vue-nuxt/
   ],
+
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'es',
+    vueI18n: {
+      fallbackLocale: 'es',
+      messages: {
+        en: {
+          welcome: 'Welcome'
+        },
+        es: {
+          welcome: 'Bienvenido'
+        }
+      }
+    }
+  },
+      
     purgeCSS: {
     mode: 'postcss',
     enabled: (process.env.NODE_ENV === 'production')

@@ -73,23 +73,26 @@
   import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
   import InputBasic      from "@/components/controls/inputs/Input-Basic";
   import ButtonLoading   from "@/components/controls/buttons/ButtonLoading";
-
-export default {
+  import {mapState,mapGetters} from 'vuex'; export default {
   layout :'app-admin',
   name: 'IndexPage',
 
   data: () => ({
       form: {
         email: "jhonjamesmg@hotmail.com",
-        password: "123256"
+        password: "123456"
       },
       errors: [ ],
       buttonIsDisabled: false
   }),
   components : { FrasesCelebres, InputBasic, ButtonLoading } ,
+
+
    mounted() { 
-       User.getCokie();
+            User.getCokie();   
    },
+
+ 
 
    methods: {
       login() {
@@ -97,7 +100,7 @@ export default {
          User.login( this.form)
         .then (response => {
             this.$store.commit('UserStore/SET_USER', response.data);
-            this.$router.replace({ path: '/erp/dashboard' });
+            this.$router.replace({ path: '/erp/facturas/listado' });
             this.buttonIsDisabled = true;
             this.$refs.ButtonLoading.stopLoading();
         })

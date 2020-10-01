@@ -14,7 +14,7 @@
                           <div class="signup-form mt-6 md:mt-6">
                                 <div class=" border border-gray-400 rounded flex items-center">
                                   <div class="w-10 h-7 flex justify-center items-center flex-shrink-0 ">
-                                    <span class="text-black"> icono </span>
+                                    <span class="text-black"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> </span>
                                 </div>
                                 <div class="flex-1 ">
                                   <input  class="h-7 py-1 pr-3 w-full  focus:outline-none px-4" 
@@ -28,7 +28,7 @@
                         <div class="signup-form mt-6 md:mt-6">
                               <div class=" border border-gray-400 rounded flex items-center">
                                 <div class="w-10 h-7 flex justify-center items-center flex-shrink-0 ">
-                                  <span class="text-black"> icono </span>
+                                  <span class="text-black"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> </span>
                               </div>
                               <div class="flex-1 ">
                                 <input  class="h-7 py-1 pr-3 w-full  focus:outline-none px-4" 
