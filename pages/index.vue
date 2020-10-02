@@ -74,7 +74,7 @@
   import InputBasic      from "@/components/controls/inputs/Input-Basic";
   import ButtonLoading   from "@/components/controls/buttons/ButtonLoading";
   import {mapState,mapGetters} from 'vuex'; export default {
-  layout :'app-admin',
+   
   name: 'IndexPage',
 
   data: () => ({

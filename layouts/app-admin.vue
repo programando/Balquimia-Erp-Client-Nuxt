@@ -1,23 +1,56 @@
 <template>
-  <div class="bg-gray-900 font-sans leading-normal tracking-normal mt-12">
-         <!--Nav - Menu Superior - Logo-Empresa y usuario - Notificaciones-->
-        <ErpTopNav></ErpTopNav> 
-            <div class="flex flex-col md:flex-row">
-                <div class="bg-gray-900 shadow-lg h-16 fixed bottom-0 mt-12 md:relative md:h-screen z-10 w-full md:w-48">         
-                    <!-- Menu Lateral Izquierdo -->
-                    <ErpLeftMenu></ErpLeftMenu>  
-                </div>
-                
-                <div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5 ">
-                    <div class="flex flex-wrap  justify-center">
-                            <div class="w-full md:w-1/2   p-3 ">
-                                <!-- Contenido -->
-                                <nuxt />
-                            </div>
-                    </div>       
+ <div class="bg-gray-100  flex">
+       <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+            <div class="p-6">
+                <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">WEBTRON</a>
+    
             </div>
+        <nav class="text-white text-base font-semibold pt-3">
+            <a href="index.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Dashboard
+            </a>
+            <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fa fa-sticky-note mr-3"></i>
+                Blank Page
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <div class="w-full flex flex-col h-screen overflow-y-hidden">
+        <!-- Desktop Header -->
+        <header class="w-full flex items-center bg-white py-2 px-6 sm:flex">
+            <div class="w-1/2 justify-end">Notificaciones:</div>
+           
+            <div  class="relative w-1/2 flex justify-end">
+                <button @click="isOpen = true" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
+                </button>
+                
+                <button v-if="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
+               
+                <div v-if="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
+                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
+                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+                </div>
+
+            </div>
+        </header>
+
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+            <main class="w-full flex-grow p-6">
+                <nuxt/>
+            </main>
         </div>
-  </div>
+  
+
+
+
+    </div>
+ </div>
 </template>
 
 
@@ -29,14 +62,21 @@ import User         from "@/models/User";
 
  export default {
      data: () => ({
+        isOpen: false,
          
   }),
-
     components : { ErpTopNav, ErpLeftMenu },
-
-
     methods:{
-    
     }
  }
 </script>
+
+<style scoped>
+        .bg-sidebar { background:#F20732; }
+        .cta-btn { color: #3d68ff; }
+        .upgrade-btn { background: #1947ee; }
+        .upgrade-btn:hover { background: #F25C05; }
+        .active-nav-link { background:#F25C05; }
+        .nav-item:hover { background: #F25C05; }
+        .account-link:hover { background: #3d68ff; }
+</style>

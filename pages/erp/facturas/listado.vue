@@ -1,37 +1,58 @@
  
 <template>
   <div>
-   <div class="flex flex-col text-center w-full mb-5">
-      <h1 class="sm:text-4xl text-3xl font-medium title-font   text-gray-900">Facturas y notas crédito</h1>
+    <h1 class="text-2xl text-black pb-1">Documentos electrónicos DIAN</h1>
 
-    </div>
+    <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-1">
+			<thead class="text-white">
+				<tr class="bg-blue-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+					<th class="p-3 text-left">Fecha</th>
+					<th class="p-3 text-left">Factura</th>
+					<th class="p-3 text-left">Cliente</th>
+					<th class="p-3 text-left">Dian</th>
+					<th class="p-3 text-left" width="50px">Pdf</th>
+					<th class="p-3 text-left" width="50px">Xml</th>
+					 
+				</tr>
 
-  
- <table class="table-auto w-full text-left whitespace-no-wrap">
-        <thead>
-          <tr>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">Fecha</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">Factura</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">Cliente</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">Dian</th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"> Pdf</th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"> Xml</th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr v-for="Factura in Facturas" :key="Factura.id">
-          
-            <td >{{ Factura['attributes']['fecha-factura'] }}  </td>
-            <td >{{ Factura['attributes']['prefijo'] }}-{{ Factura['attributes']['id'] }} </td>
-            <td >{{ Factura['customer']['name'] }}  </td>
-            <td >{{ Factura['customer']['name'] }}  </td>
-             
-          </tr>
+			</thead>
+			<tbody class="flex-1 sm:flex-none">
+        <tr v-for="Factura in Facturas" :key="Factura.id"
+          class="flex flex-col flex-no wrap sm:table-row mb-1 sm:mb-0 text-xs" >		
+					<td class="border-grey-light border hover:bg-gray-100 p-1">{{ Factura['attributes']['fecha-factura'] }} </td>
+					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">{{ Factura['attributes']['prefijo'] }}-{{ Factura['attributes']['number']}} </td>
+					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">{{ Factura['customer']['name'] }} </td>
+					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">
+                <div class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-0 shadow text-xs">
+                     <span v-if="Factura['attributes']['rspnse_dian']"
+                        class="inline-flex bg-green-600 text-white rounded-full h-5 px-3 justify-center items-center">Recibida</span>
+                     <span v-else
+                         class="inline-flex bg-red-600 text-white rounded-full h-5 px-3 justify-center items-center">Pendiente</span>
+                </div>
+          </td>
+					<td class="border-grey-light border hover:bg-gray-100 p-1  text-center text-red-600 text-sm" > 
+            <nuxt-link to="/">
+              <i v-if="Factura['attributes']['rspnse_dian']" 
+                  class="fa fa-file-pdf-o" aria-hidden="true">
+              </i> 
+            </nuxt-link>
+          </td>
+					<td class="border-grey-light border hover:bg-gray-100 p-1 text-center text-blue-600 text-sm "> 
+            <nuxt-link to="/">
+              <i v-if="Factura['attributes']['rspnse_dian']" 
+                  class="fa fa-file-code-o" aria-hidden="true">
+              </i> 
+            </nuxt-link>		
+            </td>			
+				</tr>
 
-
-
-        </tbody>
-      </table>
+			</tbody>
+		</table>
+  <!--  <div class="flex flex-col text-center w-full mb-5">
+ 
+<td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">Delete</td>
+   
+      </table> -->
      
       
   </div>
@@ -40,21 +61,7 @@
 
 <script>
 
-/*
-             <tr v-for="Factura in Facturas" :key="Factura.id_fact_elctrnca">
-                  <td>{{Factura._07_fcha_fctra}}</td>
-                  <td>{{Factura._06_emprsa}}</td>
-                  <td>{{Factura.prefijo}}-{{Factura.folio}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button>Enviar</button></td>
-             </tr>
-  */
 
-
-/*  import { FacturaElectronica } from '@/config/services';
- const Factura = new  FacturaElectronica('facturas');  */
 
 import Facturas            from "@/models/Facturas";
 
@@ -70,7 +77,7 @@ export default {
         Facturas.getFacturas ()
         .then (response => {
            this.Facturas = response.data.data;
-           console.log ( this.Facturas.data);
+           console.log (this.Facturas );
         })
         .catch( error => {
           if ( error.response.status == 422) {
@@ -84,7 +91,23 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
 
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+  
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 5px solid rgba(0, 0, 0, .1);
+  }
  
 </style>
