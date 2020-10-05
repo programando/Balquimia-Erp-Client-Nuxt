@@ -84,6 +84,7 @@ export default {
                 "rounded-full": 		this.rounded 	   === "large",
                 "px-6 py-2": 			this.size 	 	   == "normal",
                 "px-4 py-1": 			this.size 	 	   == "small",
+                "px-2 py-1": 			this.size 	 	   == "xs",
                 "base-button inline-flex align-middle align-items-center justify-center  focus:outline-none border-2": true,
             };
         },
@@ -95,12 +96,12 @@ export default {
                         case "normal":
                             switch (this.disableButton) {
                                 case true:
-                                    return "border-blue-300 bg-blue-300 text-white";
+                                    return "border-blue-300 bg-blue-300 text-white text-xs";
                                     break;
                                 default:
                                     break;
                             }
-                            return "border-blue-600 bg-blue-600 hover:bg-blue-700 hover:border-blue-700 text-white";
+                            return "border-blue-600 bg-blue-600 hover:bg-blue-700 hover:border-blue-700 text-white text-xs";
                             break;
                         case "outline":
                             return "border-gray-200 text-blue-500 hover:text-blue-700";

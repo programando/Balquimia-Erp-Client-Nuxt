@@ -1,4 +1,4 @@
- 
+s 
 <template>
   <div>
     <h1 class="text-2xl text-black pb-1">Documentos electrónicos DIAN</h1>
@@ -17,7 +17,8 @@
 
 			</thead>
 			<tbody class="flex-1 sm:flex-none">
-        <tr v-for="Factura in Facturas" :key="Factura.id"
+ 
+        <tr v-for="(Factura, index) in Facturas" :key="Factura.id"
           class="flex flex-col flex-no wrap sm:table-row mb-1 sm:mb-0 text-xs" >		
 					<td class="border-grey-light border hover:bg-gray-100 p-1">{{ Factura['attributes']['fecha-factura'] }} </td>
 					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">{{ Factura['attributes']['prefijo'] }}-{{ Factura['attributes']['number']}} </td>
@@ -30,65 +31,88 @@
                          class="inline-flex bg-red-600 text-white rounded-full h-5 px-3 justify-center items-center">Pendiente</span>
                 </div>
           </td>
-					<td class="border-grey-light border hover:bg-gray-100 p-1  text-center text-red-600 text-sm" > 
-            <nuxt-link to="/">
-              <i v-if="Factura['attributes']['rspnse_dian']" 
-                  class="fa fa-file-pdf-o" aria-hidden="true">
-              </i> 
-            </nuxt-link>
+
+					<td colspan="2" class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
+              <button v-if="Factura['attributes']['rspnse_dian'] "   
+                @click="sendFiles( Factura)"
+                class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded inline-flex items-center text-xs outline-none">
+                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                  <span class="ml-2"> {{ btnCaption}}</span>
+              </button>
           </td>
-					<td class="border-grey-light border hover:bg-gray-100 p-1 text-center text-blue-600 text-sm "> 
-            <nuxt-link to="/">
-              <i v-if="Factura['attributes']['rspnse_dian']" 
-                  class="fa fa-file-code-o" aria-hidden="true">
-              </i> 
-            </nuxt-link>		
-            </td>			
+	
 				</tr>
+        <tr>
+            <td colspan="6"  class="text-center m-4"> 
+        <div class="inline-flex m-2">
+              <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                Anterior
+              </button>
+              <button  
+              class= "ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+                Siguiente
+              </button>
+            </div>    
+            </td> 
+        </tr>
+ 
 
 			</tbody>
 		</table>
-  <!--  <div class="flex flex-col text-center w-full mb-5">
- 
-<td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">Delete</td>
-   
-      </table> -->
-     
-      
+
   </div>
 </template>
 
 
 <script>
 
-
-
 import Facturas            from "@/models/Facturas";
+import {Messages}       from "@/mixins/Messages";
 
 export default {
   name: 'UltimasFacturasCreadas',
   layout :'app-admin',
     data: () => ({
       Facturas: [],
-      Mensaje:'Últimos documentos generados generados',
+      Links : [],
+      btnCaption : 'Reenviar'
+
     }),
+    
  
      created() {
         Facturas.getFacturas ()
         .then (response => {
            this.Facturas = response.data.data;
-           console.log (this.Facturas );
+           this.Links = response.data.links;
         })
         .catch( error => {
-          if ( error.response.status == 422) {
+/*           if ( error.response.status == 422) {
             this.errors = error.response.data.errors;  
-          }
-        });
+          } */
+        })
+     },
+      mixins: {Messages }, 
+     computed : {
+           
+     },
+
+        methods:  {
+              sendFiles ( Factura   ) {
+              let idFactura             = Factura['attributes']['id']     
+              Facturas.sendFiles (idFactura )   
+               .then( response => { 
+                  Messages.Success('¡ Archivos enviados !','Los archivos han sido puestos en la bandeja de salida. En unos minutos serán enviados a los correos registrados.');
+               })              
+
+              }
+        },
        
     }  
-  
-}
+
+ 
 </script>
+
 
 
 <style scoped>

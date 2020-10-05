@@ -70,6 +70,7 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-purgecss',
     'nuxt-i18n',    // https://tecnoxperiencia.com/aplicacion-multilenguaje-utilizando-vue-i18n-vue-nuxt/
+    'nuxt-sweetalert2',
   ],
 
   i18n: {

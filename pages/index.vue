@@ -2,9 +2,9 @@
 <div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
 
     <header class="bg-cover bg-center  h-full w-full opacity-100" 
-            style="background-image: url('/images/login/backgound-login.jpg');">
+            style="background-image: url('/images/login/background-login.jpg');">
             <h1 class="text-4xl text-center mt-12 font-bold text-white tracking-wide">BALQUIMIA S.A.S.</h1>
-            <!-- https://ik.imagekit.io/q5edmtudmz/peter-lloyd-680526-unsplash_TYZn4kayG.jpg -->
+      
         <div class="content px-40 py-2">
             <div class="body mt-20 mx-8">
                 <div class="md:flex items-center justify-between">

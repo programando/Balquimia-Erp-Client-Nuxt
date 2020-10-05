@@ -12,7 +12,7 @@
             </a>
             <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fa fa-sticky-note mr-3"></i>
-                Blank Page
+                Listado de precios
             </a>
 
         </nav>
@@ -22,19 +22,20 @@
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
         <!-- Desktop Header -->
         <header class="w-full flex items-center bg-white py-2 px-6 sm:flex">
-            <div class="w-1/2 justify-end">Notificaciones:</div>
+            <div class="w-1/2 justify-end">Notificaciones</div>
            
             <div  class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = true" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
+                    <img src='/images/avatars/face.jpg'>
                 </button>
                 
                 <button v-if="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
                
                 <div v-if="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Mi perfil</a>
+                    <nuxt-link to="" >
+                    <div type="button" class="block px-4 py-2 account-link hover:text-white" @click="logout()">Cerrar sesión </div>
+                    </nuxt-link>
                 </div>
 
             </div>
@@ -66,8 +67,14 @@ import User         from "@/models/User";
          
   }),
     components : { ErpTopNav, ErpLeftMenu },
-    methods:{
-    }
+    methods: {
+        logout(){
+             User.logout().then( response => {
+             this.$store.commit('UserStore/SET_USER', response.data);
+            this.$router.replace({ path: '/' });
+            });  
+        }
+        },
  }
 </script>
 
