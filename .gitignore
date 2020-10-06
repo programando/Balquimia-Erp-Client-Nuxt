@@ -4,6 +4,8 @@
 # Logs
 
 /config/constants/address.js
+documentation.txt
+documentation-imports.txt
 
 /logs
 *.log
