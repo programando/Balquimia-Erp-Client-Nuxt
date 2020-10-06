@@ -34,7 +34,7 @@ s
 
 					<td colspan="2" class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
               <button v-if="Factura['attributes']['rspnse_dian'] "   
-                @click="sendFiles( Factura)"
+                @click="sendFiles($event, Factura)"
                 class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded inline-flex items-center text-xs outline-none">
                   <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                   <span class="ml-2"> {{ btnCaption}}</span>
@@ -98,10 +98,12 @@ export default {
      },
 
         methods:  {
-              sendFiles ( Factura   ) {
-              let idFactura             = Factura['attributes']['id']     
+              sendFiles ( e,Factura   ) {
+              let idFactura             = Factura['attributes']['id'];
+              e.target.innerHTML = "Enviando..";     
               Facturas.sendFiles (idFactura )   
                .then( response => { 
+                 e.target.innerHTML = "Reenviar";
                   Messages.Success('¡ Archivos enviados !','Los archivos han sido puestos en la bandeja de salida. En unos minutos serán enviados a los correos registrados.');
                })              
 
