@@ -3,7 +3,7 @@
 require('dotenv').config(); // process.env.variable-definida
 
 export default {
-  mode: 'universal',
+  //mode: 'universal',
   /*
   ** Headers of the page
   */
