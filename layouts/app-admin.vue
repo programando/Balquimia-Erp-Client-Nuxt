@@ -14,9 +14,7 @@
                 <i class="fa fa-sticky-note mr-3"></i>
                 Listado de precios
             </a>
-
         </nav>
-
     </aside>
 
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
@@ -26,7 +24,7 @@
            
             <div  class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = true" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src='/images/avatars/face.jpg'>
+                    <img @click="isOpen = true" src='/images/avatars/face.jpg'>
                 </button>
                 
                 <button v-if="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>

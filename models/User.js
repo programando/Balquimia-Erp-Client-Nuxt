@@ -23,9 +23,9 @@ export default {
       },
       
       async resetPassword(formData) {
-        return Api.post('/reset/password', formData);
+        return Api.post('reset/password', formData);
       },
       async updatePassword(formData) {
-        return Api.post('/update/password', formData);
+        return Api.post('update/password', formData);
       }
 }

@@ -32,14 +32,22 @@ s
                 </div>
           </td>
 
-					<td colspan="2" class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
+					<td  class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
               <button v-if="Factura['attributes']['rspnse_dian'] "   
-                @click="sendFiles($event, Factura, index)"
-                class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded inline-flex items-center text-xs outline-none">
-                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                  <span class="ml-2"> {{ btnCaption}}</span>
+                @click="downloadFiles($event, Factura, index, 'pdf')"
+                class=" text-red-500 py-1 px-2 rounded inline-flex items-center text-sm outline-none">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>      
               </button>
           </td>
+
+              	<td  class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
+                      <button v-if="Factura['attributes']['rspnse_dian'] "   
+                          @click="downloadFiles($event, Factura, index, 'xml')"
+                          class=" text-black py-1 px-2 rounded inline-flex items-center text-sm outline-none">
+                          <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                      </button>
+            </td>
+          
 	
 				</tr>
         <tr>
@@ -68,6 +76,7 @@ s
 
 import Facturas            from "@/models/Facturas";
 import {Messages}       from "@/mixins/Messages";
+import { address} from '@/config/constants'
 
 export default {
   name: 'UltimasFacturasCreadas',
@@ -75,7 +84,7 @@ export default {
     data: () => ({
       Facturas: [],
       Links : [],
-      btnCaption : 'Reenviar'
+       
 
     }),
     
@@ -98,15 +107,10 @@ export default {
      },
 
         methods:  {
-              sendFiles ( e,Factura, index   ) {
-              let idFactura             = Factura['attributes']['id'];
-              e.target.innerHTML = "Enviando..";     
-              Facturas.sendFiles (idFactura )   
-               .then( response => { 
-                 e.target.innerHTML = "Reenviar";
-                  Messages.Success('¡ Archivos enviados !','Los archivos han sido puestos en la bandeja de salida. En unos minutos serán enviados a los correos registrados.');
-               })              
-
+              downloadFiles ( e,Factura, index, filetype   ) {
+              let idFactura = Factura['attributes']['id'];
+              let Url       = address.apiUrl+`invoices/download/${filetype}/${idFactura}`;
+              window.open(Url, '_blank');
               }
         },
        
