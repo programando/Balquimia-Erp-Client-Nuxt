@@ -73,7 +73,9 @@
   import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
   import InputBasic      from "@/components/controls/inputs/Input-Basic";
   import ButtonLoading   from "@/components/controls/buttons/ButtonLoading";
-  import {mapState,mapGetters} from 'vuex'; export default {
+  import {mapState,mapGetters} from 'vuex'; 
+  
+  export default {
    
   name: 'IndexPage',
 
@@ -89,10 +91,10 @@
 
 
    mounted() { 
-            User.getCokie();   
+       User.getCokie(); 
    },
 
- 
+    middleware: ['auth'],
 
    methods: {
       login() {

@@ -25,7 +25,16 @@ export default {
     ],
  
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel:  'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,400&display=swap'
+      }
+      
     ]
   },
   /*
@@ -37,10 +46,13 @@ export default {
   */
   css: [
     '@/assets/css/tailwind.css',
-    '@/assets/css/app-transitions'
+    '@/assets/css/app-transitions',
+    '@/assets/css/sass/app.scss',
+ 
   ],
 
   build: {
+     
  
   },
     
@@ -71,8 +83,15 @@ export default {
     'nuxt-purgecss',
     'nuxt-i18n',    // https://tecnoxperiencia.com/aplicacion-multilenguaje-utilizando-vue-i18n-vue-nuxt/
     'nuxt-sweetalert2',
+    '@nuxtjs/style-resources',
   ],
 
+  styleResources: {
+          scss: [
+              '@/assets/css/sass/app.scss', 
+          ]
+      },
+    
   i18n: {
     locales: ['en', 'es'],
     defaultLocale: 'es',

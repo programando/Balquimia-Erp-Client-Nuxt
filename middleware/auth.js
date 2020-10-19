@@ -1,6 +1,6 @@
 
 export default function ({ store, redirect, route, error }) {
 
-// Your middleware
+console.log(store.state.UserStore );
 
 }

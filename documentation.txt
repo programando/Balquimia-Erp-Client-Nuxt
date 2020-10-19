@@ -1,6 +1,7 @@
 tailwind Components - toolbox
    https://tailwindcomponents.com/
    https://www.tailwindtoolbox.com/
+   https://codepen.io/tag/tailwindcss?cursor=ZD0xJm89MCZwPTEy
 
 How to use FontAwesome 5 in Nuxt ( Julio 06 2020)
    https://hisk.io/fontawesome-nuxt/
@@ -14,7 +15,7 @@ Starter Kit
    https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation
    
 
-https://webdesign.tutsplus.com/es/tutorials/how-to-create-a-responsive-form-using-tailwindcss--cms-34128
 
 
-https://codepen.io/tag/tailwindcss?cursor=ZD0xJm89MCZwPTEy
+Use Sass into nuxt aplication
+   https://hackernoon.com/how-i-use-scss-variables-mixins-functions-globally-in-nuxt-js-projects-while-compiling-css-utilit-58bb6ff30438

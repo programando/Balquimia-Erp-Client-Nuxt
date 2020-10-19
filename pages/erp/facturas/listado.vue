@@ -1,4 +1,3 @@
-s 
 <template>
   <div>
     <h1 class="text-2xl text-black pb-1">Documentos electrónicos DIAN</h1>
@@ -80,14 +79,14 @@ import { address} from '@/config/constants'
 
 export default {
   name: 'UltimasFacturasCreadas',
-  layout :'app-admin',
+  layout :'admin-layout',
     data: () => ({
       Facturas: [],
       Links : [],
        
 
     }),
-    
+    middleware: ['auth'],
  
      created() {
         Facturas.getFacturas ()
