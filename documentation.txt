@@ -19,3 +19,20 @@ Starter Kit
 
 Use Sass into nuxt aplication
    https://hackernoon.com/how-i-use-scss-variables-mixins-functions-globally-in-nuxt-js-projects-while-compiling-css-utilit-58bb6ff30438
+
+Drop Zone
+   https://www.telerik.com/blogs/20-nuxt-modules-with-tips-to-increase-productivity-build-web-apps-faster
+   https://github.com/Etheryte/nuxt-dropzone
+   
+
+Build an advanced search and filter with Vuex (in Nuxt)
+		https://dev.to/messerli90/build-an-advanced-search-and-filter-with-vuex-in-nuxt-3jn8
+		
+Nuxt: How to use nuxt-link-active and nuxt-link-exact-active classes with nuxt-link?
+		https://dev.to/drraq/nuxt-how-to-use-nuxt-link-active-and-nuxt-link-exact-active-classes-with-nuxt-link-3cpp
+
+ 
+
+INTERNACIONALIZACIÓN
+-----------------------
+https://medium.com/@ale_colombo/a-simple-multilanguage-site-with-nuxt-js-and-nuxt-i18n-43cce9f9f0fe

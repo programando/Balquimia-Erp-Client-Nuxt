@@ -1,0 +1,106 @@
+.sidebar {
+  background-color: $Color_Alterno_2;
+   flex            : 0 0 20rem; 
+  padding         : 1rem;
+  margin-top      : 4.7rem;
+  transition      : margin-left .4s ease;
+  position        : fixed;
+  height          : 100vh;
+    .usuario {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      
+        p {
+          color: white;
+          
+          span {
+            display: block;
+          }
+        }
+      img {
+        border-radius: 50%;
+        max-width: 4rem;
+        margin-right: .7rem;
+      }
+    }
+}
+
+
+.sidebar-menu {
+      left: 0;
+      background-color: $Color_Alterno_2;
+      color: white;
+      height: 100vh;
+      ul {
+        width: 100%;
+      }
+  }
+
+.webtron {
+  letter-spacing: .2rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem
+}
+
+nav ul {
+  background-color: $Color_Alterno_2;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+}
+nav ul li {
+  line-height: 35px;
+  border-bottom: 1px solid grey; 
+}
+
+nav ul li a {
+    position       : relative;
+    color          : white;
+    text-decoration: none;
+    font-size      : 18px;
+    padding-left   : 10px;
+    font-weight    : 500;
+    display        : block;
+    width          : 100%;
+    border-left    : 3px solid transparent;
+}
+
+nav ul li a:hover {
+  color            : $blanco;
+  background-color : $Color_Alterno_3;
+  border-left-color: $blanco;
+}
+
+nav ul ul {
+ position: static;
+ display: none; 
+}
+
+ nav ul li:hover ul{
+   display: block;
+ }
+ 
+
+nav ul ul li {
+    line-height: 42px;
+    border-bottom: none;
+}
+
+nav ul ul li a {
+  font-size: 17px;
+  color: #e6e6e6;
+  padding-left: 30px;
+}
+nav ul  li a span {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+}
+
+nav ul  li a:hover span {
+  transform: translateY(-50%) rotate(-180deg);
+}

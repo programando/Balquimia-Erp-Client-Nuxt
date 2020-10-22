@@ -1,5 +1,11 @@
 @import 'variables';
 @import 'mixins';
+@import 'app-menu-header';
+@import 'app-sidebar-new';
+/* @import 'app-sidebar';*/
+
+
+
 html {
     @include box-sizing(border-box);
     height: 100vh;
@@ -31,7 +37,7 @@ img {
 
 .no-menu.pagina {
   .sidebar {
-      margin-left: -15rem;
+      margin-left: -17rem;
   }
 }
 
@@ -77,145 +83,15 @@ img {
   }
 }
 
-.barra {
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
-  background-color: $Color_Principal;
-  color: $blanco;
-  
-
-  .menu-izquierdo {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    cursor: pointer;
-    i {
-      color: $blanco;
-      font-size: 1.4rem;
-    }
-    .fa-arrow-right{
-        display: none;
-    }
-  }
-
-.caja {
-  cursor: pointer;
-}
-  .menu-derecho {
-    display: flex;
-    .caja {
-      padding: 0 1rem;
-      display: flex;
-      align-items: center;
-      &:hover {
-        background-color: $Color_Alterno_1;
-        color: $blanco;
-      }
-
-      a {
-        color: $blanco;
-        text-decoration: none;
-          span {
-            background-color: $Color_Alterno_2;
-            color: $blanco;
-            border-radius: 50%;
-            padding: .3rem;
-            margin-left: .5rem;
-            font-size: .7rem;
-          }
-      }
-    }
-  }
-}
-
-.sidebar {
-  background-color: $Color_Alterno_2;
-  flex: 0 0 15rem;
-  padding: 1rem;
-  margin-top: 4.5rem;
-  transition: margin-left .4s ease;
-    .usuario {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      
-        p {
-          color: white;
-          
-          span {
-            display: block;
-          }
-        }
-      img {
-        border-radius: 50%;
-        max-width: 4rem;
-        margin-right: .7rem;
-      }
-    }
-     .buscador {
-        margin-top: 1rem;
-        input[type="text"] {
-          width: 100%;
-          height: 1.7rem;
-          border:none;
-          border-radius: 10px;
-          padding-left: .4rem;
-
-        }
-      }
  
-}
- 
- .menu-admin {
-    margin-top: 1rem;
-    color: $blanco ;
-    .menu {
-        list-style: none;
-        padding: 0 0 0 .5rem;
-
-        > li {
-          padding: .5rem;
-          &:hover {
-            ul {
-              display:block;
-              margin-left: 1.5rem;
-            }
-          }
-          a {
-            color: $blanco;
-            text-decoration: none;
-            padding: .5rem;
-            transition: padding-left 2s ease;
-            &:hover{
-              padding-left: 1rem;
-              display: block;
-            }
-          }
-          ul {
-            display: none;
-            margin-top: .5rem;
-            list-style: none;
-            background-color: $Color_Alterno_3;
-            li {
-              margin-bottom: 1rem;
-              &:last-of-type{
-                margin-bottom: 0;
-              }
-            }
-          }
-        } 
-    }
- }
-
-
 .container-principal {
-  flex: 1;
   display: flex;
 }
 
+ 
 .contenido {
   flex:1;
+  margin-left: 13rem;
+  margin-top: 3.7rem;
   padding: 2rem;
-  margin-top: 3.2rem;
 }

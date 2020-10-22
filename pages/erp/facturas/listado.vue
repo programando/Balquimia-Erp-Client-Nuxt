@@ -83,8 +83,6 @@ export default {
     data: () => ({
       Facturas: [],
       Links : [],
-       
-
     }),
     middleware: ['auth'],
  

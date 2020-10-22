@@ -51,18 +51,12 @@ export default {
  
   ],
 
-  build: {
-     
  
-  },
     
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    { src: '~/plugins/vuex-persist', ssr: false }
-      
-  ],
+  plugins: [ ],
  
   /*
   ** Nuxt.js dev-modules
@@ -74,16 +68,24 @@ export default {
   ],
   /*
   ** Nuxt.js modules
+  ** https://github.com/Etheryte/nuxt-dropzone
+   https://github.com/wemake-services/nuxt-imagemin
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-  
-    '@nuxtjs/axios',
+    '@nuxtjs/axios',            // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
     'nuxt-purgecss',
-    'nuxt-i18n',    // https://tecnoxperiencia.com/aplicacion-multilenguaje-utilizando-vue-i18n-vue-nuxt/
+    'nuxt-i18n',                // https://tecnoxperiencia.com/aplicacion-multilenguaje-utilizando-vue-i18n-vue-nuxt/
     'nuxt-sweetalert2',
     '@nuxtjs/style-resources',
+    'cookie-universal-nuxt',    // https://www.npmjs.com/package/cookie-universal-nuxt
+    '@nuxtjs/toast',           // https://github.com/nuxt-community/modules/tree/master/packages/toast
+ /*     "nuxt-imagemin",          
+      {
+        optipng: { optimizationLevel: 5 },
+        gifsicle: { optimizationLevel: 2 },
+    }
+       */
   ],
 
   styleResources: {
@@ -116,9 +118,7 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-     
-  },
+  axios: { },
 
   
   /*

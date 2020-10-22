@@ -1,0 +1,53 @@
+.barra {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  background-color: $Color_Principal;
+  color: $blanco;
+  /* background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%); */
+
+  .menu-izquierdo {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    i {
+      color: $blanco;
+      font-size: 1.4rem;
+    }
+    .fa-arrow-right{
+        display: none;
+    }
+  }
+
+.caja {
+  cursor: pointer;
+}
+  .menu-derecho {
+    display: flex;
+    margin-right: 1rem;
+    .caja {
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: $Color_Alterno_1;
+        color: $blanco;
+      }
+
+      a {
+        color: $blanco;
+        text-decoration: none;
+          span {
+            background-color: $Color_Alterno_2;
+            color: $blanco;
+            border-radius: 50%;
+            padding: .3rem;
+            margin-left: .5rem;
+            font-size: .7rem;
+          }
+      }
+    
+    }
+  }
+}

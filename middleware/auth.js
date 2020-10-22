@@ -1,6 +1,7 @@
-
-export default function ({ store, redirect, route, error }) {
-
-console.log(store.state.UserStore );
+ 
+export default function (  contex ) {
+  if (!contex.$cookies.get('logueado')) {
+    contex.redirect('/');
+  }
 
 }

@@ -31,8 +31,7 @@
 </template>
 
 <script>
-  import User from "@/models/User";
-  import {mapGetters, mapMutations} from 'vuex';
+import User from "@/models/User";
 
  export default {
 
@@ -43,11 +42,7 @@
     }
   },
 
-    computed : {
-        ...mapGetters ({
-            user: 'UserStore/getUser',
-        })
-    },
+ 
 
 
   methods: {
@@ -70,8 +65,8 @@
             },
         logout(){
                 User.logout().then( response => {
-                this.$store.commit('UserStore/SET_USER', response.data);
-                this.$router.replace({ path: '/' });
+                this.$store.commit('USER_LOGOUT', null);
+                this.$router.replace({ path: '/' });    
             });
         },
 

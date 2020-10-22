@@ -73,7 +73,10 @@
   import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
   import InputBasic      from "@/components/controls/inputs/Input-Basic";
   import ButtonLoading   from "@/components/controls/buttons/ButtonLoading";
+  import Cookie          from 'js-cookie';
   import {mapState,mapGetters} from 'vuex'; 
+ 
+ 
   
   export default {
    
@@ -89,19 +92,18 @@
   }),
   components : { FrasesCelebres, InputBasic, ButtonLoading } ,
 
+   middleware :  [ 'loggedIn'],
 
    mounted() { 
-       User.getCokie(); 
+       User.getCokie()
    },
-
-    middleware: ['auth'],
 
    methods: {
       login() {
         this.$refs.ButtonLoading.startLoading();
          User.login( this.form)
         .then (response => {
-            this.$store.commit('UserStore/SET_USER', response.data);
+            this.$store.commit('SET_USER', response.data);
             this.$router.replace({ path: '/erp/facturas/listado' });
             this.buttonIsDisabled = true;
             this.$refs.ButtonLoading.stopLoading();

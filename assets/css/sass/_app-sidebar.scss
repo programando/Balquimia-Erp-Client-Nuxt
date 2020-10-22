@@ -1,0 +1,68 @@
+.sidebar {
+  background-color: $Color_Alterno_2;
+  flex: 0 0 18rem;
+  padding: 1rem;
+  margin-top: 4.7rem;
+  transition: margin-left .4s ease;
+  position: fixed;
+  height: 100vh;
+    .usuario {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      
+        p {
+          color: white;
+          
+          span {
+            display: block;
+          }
+        }
+      img {
+        border-radius: 50%;
+        max-width: 4rem;
+        margin-right: .7rem;
+      }
+    }
+}
+
+ .menu-admin {
+    margin-top: 1rem;
+    color: $blanco ;
+    .menu {
+        list-style: none;
+        padding: 0 0 0 .5rem;
+
+        > li {
+          padding: .5rem;
+          &:hover {
+            ul {
+              display:block;
+              margin-left: 1.5rem;
+            }
+          }
+          a {
+            color: $blanco;
+            text-decoration: none;
+            padding: .5rem;
+            transition: padding-left 2s ease;
+            &:hover{
+              padding-left: 1rem;
+              display: block;
+            }
+          }
+          ul {
+            display: none;
+            margin-top: .5rem;
+            list-style: none;
+            background-color: $Color_Alterno_3;
+            li {
+              margin-bottom: 1rem;
+              &:last-of-type{
+                margin-bottom: 0;
+              }
+            }
+          }
+        } 
+    }
+ }
