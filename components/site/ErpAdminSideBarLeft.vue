@@ -14,8 +14,11 @@
                 <span><i class="fa fa-caret-down" aria-hidden="true"></i></span>
               </a>
                 <ul>
-                  <li><a href="">Facturas</a></li>
-                  <li><a href="">Lista Precios</a></li>
+                  <li>
+                    <nuxt-link to="/erp/facturas/listado">Facturas</nuxt-link>
+
+                  </li>
+                  <li> <nuxt-link to="/erp/productos/precios"> Lista precios</nuxt-link> </li>
                 </ul>
               </li>
 
@@ -24,7 +27,7 @@
               </a>
                 
                 <ul>
-                  <li><a href="">Registro Pedidos</a></li>
+                  <li><a href="">Registro pedidos</a></li>
                   <li><a href="">Autorización</a></li>
                   <li><a href="">Consulta</a></li>
                 </ul>
