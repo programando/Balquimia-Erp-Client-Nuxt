@@ -38,7 +38,7 @@
 <script>
   import Productos from '@/models/Productos';
   import { VueGoodTable } from 'vue-good-table';
-  import '@/node_modules/vue-good-table/dist/vue-good-table.css';
+  import '@/assets/css/vue-good-table.css';
 
 
   export default {
