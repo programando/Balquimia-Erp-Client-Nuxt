@@ -33,7 +33,12 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,400&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href:'@/node_modules/vue-good-table/dist/vue-good-table.css'
       }
+
       
     ]
   },
