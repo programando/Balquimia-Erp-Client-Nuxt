@@ -3,8 +3,12 @@ import Api  from "@/config/services/Axios";
 
 export default {
 
-      async getFacturas() {
-        return Api.get('facturas-electronicas?sort=-fcha_dcmnto');
+  async getFacturas(url) {
+    if ( url == undefined) {
+      return Api.get('facturas-electronicas?sort=-fcha_dcmnto');
+    } else {
+      return Api.get(url);
+    }
   },
   
        async sendFiles( IdFactura) {

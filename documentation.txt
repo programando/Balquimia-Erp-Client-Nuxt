@@ -2,6 +2,14 @@ tailwind Components - toolbox
    https://tailwindcomponents.com/
    https://www.tailwindtoolbox.com/
    https://codepen.io/tag/tailwindcss?cursor=ZD0xJm89MCZwPTEy
+   https://tailwindui.com/preview
+   https://merakiui.com/
+   https://tailwindesign.com/components/modal
+   https://github.com/slim-python/tailwind-css-free-components?fbclid=IwAR0cZIQNWkPbrc_Y7zRBqb0Cj2wH_64U5VJ8ugPLw5-A7FD9Iq1_7riIDjw
+
+FullCalendar
+   https://visjs.github.io/vis-timeline/docs/timeline/
+   
 
 How to use FontAwesome 5 in Nuxt ( Julio 06 2020)
    https://hisk.io/fontawesome-nuxt/

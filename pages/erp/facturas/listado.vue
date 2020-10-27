@@ -50,15 +50,17 @@
 	
 				</tr>
         <tr>
-            <td colspan="6"  class="text-center m-4"> 
+
+ 
+
+       <td colspan="6"  class="text-center m-4"> 
         <div class="inline-flex m-2">
-              <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                Anterior
-              </button>
-              <button  
-              class= "ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                Siguiente
-              </button>
+            <Pagination 
+                :prevPageLink = "prevPageLink"
+                :nextPageLink = "nextPageLink"
+                @getFacturas = "getFacturas">
+            </Pagination>
+  
             </div>    
             </td> 
         </tr>
@@ -73,42 +75,55 @@
 
 <script>
 
-import Facturas            from "@/models/Facturas";
-import {Messages}       from "@/mixins/Messages";
-import { address} from '@/config/constants'
+import Facturas        from "@/models/Facturas";
+import { Messages }    from "@/mixins/Messages";
+import { address  }    from '@/config/constants'
+import Pagination   from "@/components/controls/PaginationBotons";
 
 export default {
   name: 'UltimasFacturasCreadas',
   layout :'admin-layout',
     data: () => ({
-      Facturas: [],
-      Links : [],
+      Facturas    : [],
+      nextPageLink: null,
+      prevPageLink: null,
+      firstPageLink: null,
+      lastPageLink: null
     }),
     middleware: ['auth'],
- 
+    components : {Pagination},
      created() {
-        Facturas.getFacturas ()
-        .then (response => {
-           this.Facturas = response.data.data;
-           this.Links = response.data.links;
-        })
-        .catch( error => {
-/*           if ( error.response.status == 422) {
-            this.errors = error.response.data.errors;  
-          } */
-        })
+          this.getFacturas();
      },
       mixins: {Messages }, 
-     computed : {
-           
-     },
 
-        methods:  {
+      methods:  {
+              getFacturas (url  ) {
+                    this.nextPageLink = '';
+                    this.prevPageLink= '';
+                    Facturas.getFacturas ( url  )
+                    .then (response => {
+                      this.Facturas      = response.data.data;
+                      this.nextPageLink  = response.data.links.next.split('/')[3];
+                      this.firstPageLink = response.data.links.first.split('/')[3];
+                      this.lastPageLink  = response.data.links.last.split('/')[3];
+                      this.prevPageLink  = response.data.links.prev.split('/')[3];
+                    })
+                    .catch( error => {
+                        this.errors = error.response.data.error;                         
+                    })
+              }, 
+
               downloadFiles ( e,Factura, index, filetype   ) {
-              let idFactura = Factura['attributes']['id'];
-              let Url       = address.apiUrl+`invoices/download/${filetype}/${idFactura}`;
-              window.open(Url, '_blank');
-              }
+                let idFactura = Factura['attributes']['id'];
+                let Url       = address.apiUrl+`invoices/download/${filetype}/${idFactura}`;
+                window.open(Url, '_blank');
+              },
+ 
+          nextPage () {
+                console.log(this.nextPageLink);
+                this.getFacturas ( this.nextPageLink );
+          },
         },
        
     }  
