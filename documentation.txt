@@ -44,3 +44,11 @@ Nuxt: How to use nuxt-link-active and nuxt-link-exact-active classes with nuxt-l
 INTERNACIONALIZACIÓN
 -----------------------
 https://medium.com/@ale_colombo/a-simple-multilanguage-site-with-nuxt-js-and-nuxt-i18n-43cce9f9f0fe
+https://phrase.com/blog/posts/nuxt-js-tutorial-i18n/
+<nuxt-link :to="$i18n.locale === 'en' ? '/ar' : '/'">Switch Language</nuxt-link>
+https://www.youtube.com/watch?v=oHq9v1xkmv0&t=1151s&ab_channel=IOSamuel
+
+
+CAROUSEL
+-----------
+https://gs-shop.github.io/vue-slick-carousel/#/

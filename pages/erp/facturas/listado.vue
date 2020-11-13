@@ -110,7 +110,7 @@ export default {
                       this.prevPageLink  = response.data.links.prev.split('/')[3];
                     })
                     .catch( error => {
-                        this.errors = error.response.data.error;                         
+                        //this.errors = error.response.data.error;                         
                     })
               }, 
 

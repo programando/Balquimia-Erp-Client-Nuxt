@@ -1,44 +1,20 @@
 <template>
   <div>
        <h2 class="text-2xl"> Listado de Precios </h2>
-
-        <div class="flex">
-            <div class="p-4 w-full">
-              <div class="h-full  border-2 border-gray-200 rounded-lg overflow-hidden">
-                  <vue-good-table
-                            :columns      ="columns"
-                            :rows         ="rows || []"
-                            :fixed-header ="true"
-                            max-height    ="800px"
-                            styleClass    ="vgt-table bordered condensed striped vgt-left-align"
-                            :search-options="{
-                                  enabled: true,
-                                  placeholder: 'Buscar producto',
-                                  skipDiacritics: true,
-                              }"
-                            :pagination-options="{
-                                  allLabel:         'Todos',
-                                  enabled:          true,
-                                  mode:             'pages',
-                                  nextLabel:        'Siguiente',
-                                  ofLabel:          'de',
-                                  pageLabel:        'página',
-                                  prevLabel:        'Anterior',
-                                  rowsPerPageLabel: 'Registro por pág.',
-                                  perPage: 15,
-                          }"
-                    >
-                  </vue-good-table>
-              </div>
-            </div>
-        </div>
-
+        <form id="search">
+            Search <input name="query" v-model="searchQuery">
+        </form>
+        <GridSearch
+          :data       = "gridData"
+          :columns    = "gridColumns"
+          :filter-key = "searchQuery" >
+        </GridSearch>
   </div>
 </template>
 <script>
   import Productos from '@/models/Productos';
-  import { VueGoodTable } from 'vue-good-table';
-  import '@/assets/css/vue-good-table.css';
+  import GridSearch from '@/components/controls/grids/search';
+ 
 
 
   export default {
@@ -47,35 +23,35 @@
      mounted(){
         this.listaPrecios();
      },
-    components :{ VueGoodTable },
+ 
     data: () => ({
-              columns : [
-                {  label: ' Producto',
-                   field: 'nom_prdcto',  },
-                {  label: ' Presentación',
-                   field: 'nom_prsntcion',  },
-                {  label: ' $ Precio ( Sin Iva )',
-                   field: 'vr_vta',
-                   type : 'number',
-                   sortable: false,
-                   //formatFn: this.numerFormat,
-                },
-
-              ],
-              rows    : []
+          searchQuery: '',
+          gridColumns: ['Producto', 'Presentacion','Valor'],
+          gridData: [],
       }),
      
-
-      methods: {
-
+     components: { GridSearch },
+     
+     methods: {
             listaPrecios() {
                 Productos.listaPrecios()
                 .then (response =>{
-                  this.rows = response.data ;
+                    this.depurarListaPrecios( response.data );
                 })
+            },
+
+            depurarListaPrecios (Productos){
+                  this.gridData =[];
+                  const Datos = Productos.map((Producto) =>{
+                      return { 
+                          Producto    : Producto.nom_prdcto,
+                          Presentacion: Producto.nom_prsntcion,
+                          Valor       : Producto.vr_vta,
+                      }
+                  }) ;
+                  this.gridData = Datos;
             },
            
       }
-
   }
 </script>

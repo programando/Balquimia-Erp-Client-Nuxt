@@ -1,128 +1,73 @@
 <template>
-<div class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
-
-    <header class="bg-cover bg-center  h-full w-full opacity-100" 
-            style="background-image: url('/images/login/background-login.jpg');">
-            <h1 class="text-4xl text-center mt-12 font-bold text-white tracking-wide">BALQUIMIA S.A.S.</h1>
-      
-        <div class="content px-40 py-2">
-            <div class="body mt-20 mx-8">
-                <div class="md:flex items-center justify-between">
-                   
-                    <div class="w-full md:w-1/2 mr-auto" style="text-shadow: 0 20px 50px hsla(0,0%,0%,8);">                     
-                            <Frases-Celebres></Frases-Celebres>
-                    </div>
-
-                    <div class="w-full md:max-w-md mt-6">
-                        <div class="card bg-white shadow-md rounded-lg px-4 py-4 mb-6 ">
-                            <form >
-                                <div class="flex items-center justify-center">
-                                    <h2 class="text-2xl font-bold tracking-wide">
-                                        Bienvenid@
-                                    </h2> 
-                                </div>
-                                <h5 class="text-sm text-center font-semibold text-gray-800 mb-2">
-                                   Registre sus credenciales para ingreso al sistema
-                                </h5>
- 
-                           
-                                <InputBasic type= "email"
-                                        placeholder="Dirección electrónica (Email)"
-                                        v-model="form.email" 
-                                        :errors="errors.email"
-                                        @keyup="clearErrors"
-                                > </InputBasic>
-
-                                <InputBasic type= "password"
-                                        class="mt-6"
-                                        placeholder="Password o contraseña"
-                                        v-model="form.password" 
-                                        @keyup="clearErrors"
-                                > </InputBasic>
-
-
-                                <div class="flex items-center justify-between mt-3">
-                                  
-                                    <nuxt-link to="/erp/users/password-reset" class="text-gray-600"> 
-                                            Olvidé mi contraseña ? 
-                                    </nuxt-link>
-
-                                    <ButtonLoading 
-                                        @click.prevent="login" 
-                                        size="small" 
-                                        ref="ButtonLoading" 
-                                        variant="success"
-                                        variant-type="normal">  Ingresar al sistema 
-                                    </ButtonLoading>
-
-                                </div>
-                            </form>
-                        </div>
-                        
-                    </div>
-
-                </div>
+  <div class="">
+      <nav class="flex flex-wrap justify-between items-center fixed w-full mt-0">
+        <nuxt-link to="/">
+         <div class="">
+          
+            <div class="flex flex-col w-64 ml-3">
+                <img class="relaive " style="z-index:2" src="/images/site/logo-balquimia.png" alt="" >
+                <img class="absolute mt-20 w-1/3" style=" z-index:1"  src="/images/site/logo-balquimia-arrow-down.png" alt="">
             </div>
+        
         </div>
-    </header>
-</div>
+          </nuxt-link>
+          
+         <div>
+              <nuxt-link to="/" class="mr-3 p-4" > Inicio</nuxt-link>
+              <nuxt-link to="/" class="mr-3 p-4" > Productos</nuxt-link>
+              <nuxt-link to="/" class="mr-3 p-4" > Servicios</nuxt-link>
+              <nuxt-link to="/" class="mr-3 p-4" > Experiencia</nuxt-link>
+              <nuxt-link to="/" class="mr-3 p-4" > Contacto</nuxt-link>
+         </div>
+         <div>
+            <div class="flex ml-2 ">
+              <img src="/images/flags/en.png" alt="" class="mr-2 p-3">
+              <img src="/images/flags/en.webp" alt="" class="mr-2 p-3">
+            </div>
+          </div>
+      </nav>
+        <div class="w-full mt-20">
+          <VueSlickCarousel :arrows="true"  v-bind="settings">
+            <div class="w-1/2">
+                <img src="/images/slides/home-1.webp" alt="">
+            </div>
+            <div class="w-1/2"><img src="/images/slides/home-2.webp" alt=""></div>
+            <div class="w-1/2"><img src="/images/slides/home-3.webp" alt=""></div>
+            <div class="w-1/2"><img src="/images/slides/home-4.webp" alt=""></div>
+          </VueSlickCarousel>  
+      </div>
+  </div>
 </template>
 
 <script>
-  import User            from "@/models/User";
-  import FrasesCelebres  from "@/components/site/FrasesCelebresComponent";
-  import InputBasic      from "@/components/controls/inputs/Input-Basic";
-  import ButtonLoading   from "@/components/controls/buttons/ButtonLoading";
-  import Cookie          from 'js-cookie';
-  import {mapState,mapGetters} from 'vuex'; 
- 
- 
-  
-  export default {
-   
-  name: 'IndexPage',
+ import VueSlickCarousel from 'vue-slick-carousel'
+  import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+  // optional style for arrows & dots
+  import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
-  data: () => ({
-      form: {
-        email: "jhonjamesmg@hotmail.com",
-        password: "123456"
-      },
-      errors: [ ],
-      buttonIsDisabled: false
+export default {
+  data: () =>({
+        settings:{},
   }),
-  components : { FrasesCelebres, InputBasic, ButtonLoading } ,
+  components: { VueSlickCarousel },
 
-   middleware :  [ 'loggedIn'],
+  mounted(){
+      this.settings = {
+          "arrows": true,
+          "dots": true,
+          "infinite": true,
+          "slidesToShow": 1,
+          "slidesToScroll": 1,
+          "autoplay": true,
+          "speed": 8000,
+          "autoplaySpeed": 1000,
+          "cssEase": "linear",
+          "adaptiveHeight": true,
+          "focusOnSelect":true
+        
+}
+  },
 
-   mounted() { 
-       User.getCokie()
-   },
-
-   methods: {
-      login() {
-        this.$refs.ButtonLoading.startLoading();
-         User.login( this.form)
-        .then (response => {
-            this.$store.commit('SET_USER', response.data);
-            this.$router.replace({ path: '/erp/facturas/listado' });
-            this.buttonIsDisabled = true;
-            this.$refs.ButtonLoading.stopLoading();
-        })
-        .catch( error => {
-          if ( error.response.status == 422) {
-            this.errors = error.response.data.errors;  
-            this.$refs.ButtonLoading.stopLoading(); 
-          }
-        })
-       
-      },
-
-      clearErrors() {
-          this.errors = [];
-          this.buttonIsDisabled = false;
-      },
-
-  }// Methods
 
 }
 </script>

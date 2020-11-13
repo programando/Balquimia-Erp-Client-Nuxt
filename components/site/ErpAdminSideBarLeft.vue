@@ -4,8 +4,6 @@
           <img src="/images/avatars/face.jpg" alt="">
           <p> Bienvenido <span> @Usuario</span> </p> 
         </div>
-
-
         <nav class="sidebar-menu">
             <h2 class="text-2xl text-center mt-1 webtron" >WebTron</h2>
             <ul>
