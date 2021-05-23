@@ -52,7 +52,9 @@ export default {
     '@/assets/css/sass/app.scss',
   ],
 
- 
+  server: {
+    port: 3002 // por defecto: 3000
+  },
     
   /*
   ** Plugins to load before mounting the App
