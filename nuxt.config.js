@@ -53,7 +53,7 @@ export default {
   ],
 
   server: {
-    port: 3002 // por defecto: 3000
+    port: 3001 // por defecto: 3000
   },
     
   /*
