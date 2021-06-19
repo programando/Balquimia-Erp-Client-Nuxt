@@ -1,9 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
-/config/env.js
+#/config/env.js
 ### Node template
 
 
-/config/constants/address.js
+#/config/constants/address.js
 documentation.txt
 documentation-imports.txt
 
