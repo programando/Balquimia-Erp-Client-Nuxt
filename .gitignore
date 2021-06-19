@@ -6,7 +6,7 @@
 #/config/constants/address.js
 documentation.txt
 documentation-imports.txt
-
+config/constants/address.js
 # Logs
 /logs
 *.log
