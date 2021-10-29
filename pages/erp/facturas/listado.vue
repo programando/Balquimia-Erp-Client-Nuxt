@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1 class="text-2xl text-black pb-1">Documentos electrónicos DIAN</h1>
+    <h1 class="pb-1 text-2xl text-black">Documentos electrónicos DIAN</h1>
 
-    <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-1">
+    <table class="flex flex-row flex-no-wrap w-full my-1 overflow-hidden rounded-lg sm:bg-white sm:shadow-lg">
 			<thead class="text-white">
-				<tr class="bg-blue-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+				<tr class="flex flex-col mb-2 bg-blue-500 rounded-l-lg flex-no wrap sm:table-row sm:rounded-none sm:mb-0">
 					<th class="p-3 text-left">Fecha</th>
 					<th class="p-3 text-left">Factura</th>
 					<th class="p-3 text-left">Cliente</th>
@@ -18,42 +18,42 @@
 			<tbody class="flex-1 sm:flex-none">
  
         <tr v-for="(Factura, index) in Facturas" :key="Factura.id"
-          class="flex flex-col flex-no wrap sm:table-row mb-1 sm:mb-0 text-xs" >		
-					<td class="border-grey-light border hover:bg-gray-100 p-1">{{ Factura['attributes']['fecha-factura'] }} </td>
-					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">{{ Factura['attributes']['prefijo'] }}-{{ Factura['attributes']['number']}} </td>
-					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">{{ Factura['customer']['name'] }} </td>
-					<td class="border-grey-light border hover:bg-gray-100 p-1 truncate">
-                <div class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-0 shadow text-xs">
+          class="flex flex-col mb-1 text-xs flex-no wrap sm:table-row sm:mb-0" >		
+					<td class="p-1 border border-grey-light hover:bg-gray-100">{{ Factura['attributes']['fecha-factura'] }} </td>
+					<td class="p-1 truncate border border-grey-light hover:bg-gray-100">{{ Factura['attributes']['prefijo'] }}-{{ Factura['attributes']['number']}} </td>
+					<td class="p-1 truncate border border-grey-light hover:bg-gray-100">{{ Factura['customer']['name'] }} </td>
+					<td class="p-1 truncate border border-grey-light hover:bg-gray-100">
+                <div class="inline-flex items-center p-0 text-xs leading-none text-pink-600 bg-white rounded-full shadow">
                      <span v-if="Factura['attributes']['rspnse_dian']"
-                        class="inline-flex bg-green-600 text-white rounded-full h-5 px-3 justify-center items-center">Recibida</span>
+                        class="inline-flex items-center justify-center h-5 px-3 text-white bg-green-600 rounded-full">Recibida</span>
                      <span v-else
-                         class="inline-flex bg-red-600 text-white rounded-full h-5 px-3 justify-center items-center">Pendiente</span>
+                         class="inline-flex items-center justify-center h-5 px-3 text-white bg-red-600 rounded-full">Pendiente</span>
                 </div>
           </td>
-
-					<td  class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
+          <div>
+					<td  class="p-1 text-sm text-center border border-grey-light hover:bg-gray-100" > 
               <button v-if="Factura['attributes']['rspnse_dian'] "   
                 @click="downloadFiles($event, Factura, index, 'pdf')"
-                class=" text-red-500 py-1 px-2 rounded inline-flex items-center text-sm outline-none">
+                class="inline-flex items-center px-2 py-1 text-sm text-red-500 rounded outline-none ">
                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>      
               </button>
           </td>
 
-              	<td  class="border-grey-light border hover:bg-gray-100 p-1  text-center  text-sm" > 
+              	<td  class="p-1 text-sm text-center border border-grey-light hover:bg-gray-100" > 
                       <button v-if="Factura['attributes']['rspnse_dian'] "   
                           @click="downloadFiles($event, Factura, index, 'xml')"
-                          class=" text-black py-1 px-2 rounded inline-flex items-center text-sm outline-none">
+                          class="inline-flex items-center px-2 py-1 text-sm text-black rounded outline-none ">
                           <i class="fa fa-file-code-o" aria-hidden="true"></i>
                       </button>
             </td>
-          
+          </div>
 	
 				</tr>
         <tr>
 
  
 
-       <td colspan="6"  class="text-center m-4"> 
+       <td colspan="6"  class="m-4 text-center"> 
         <div class="inline-flex m-2">
             <Pagination 
                 :prevPageLink = "prevPageLink"
